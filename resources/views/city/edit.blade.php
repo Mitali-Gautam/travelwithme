@@ -19,7 +19,7 @@
         <div class="col-12 grid-margin">
           <div class="card">
             <div class="card-body">
-              <form class="form-sample" name="city_info" method="post" action="{{ route('city.store') }}">
+              <form class="form-sample" name="city_info" method="post" action="{{ route('city.update',$city->id) }}">
                 @csrf
                 <div class="row">
                   <div class="col-md-6">
@@ -29,7 +29,10 @@
                             <select class="form-control" name="country_id" id="country_id">
                                 <option>Select</option>
                                 @foreach ($countries as $country)
-                                <option value={{$country->id}}>{{$country->name}}</option>
+                                <option value={{$country->id}}
+                                    @if ($country->id == $city->country_id)
+                                    @selected(true)
+                                @endif>{{$country->name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -37,7 +40,7 @@
                     <div class="form-group row">
                         <label class="col-sm-3 col-form-label" >City Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="City Name" name="name" value="{{ old('name')}}"/>
+                            <input type="text" class="form-control" placeholder="City Name" name="name" value="{{$city->name}}"/>
                         </div>
                         @error('name')
                             <div class="alert text-danger" role="alert">
@@ -49,7 +52,7 @@
                     <div class="form-group row">
                         <label for="city_desciption" class="col-sm-3 col-form-label">Description</label>
                         <div class="col-sm-9">
-                            <textarea class="form-control" name="city_desciption" id="city_desciption" rows="4"></textarea>
+                            <textarea class="form-control" name="city_desciption" id="city_desciption" rows="4">{{$city->description}}</textarea>
                         </div>
                       </div>
                   </div>

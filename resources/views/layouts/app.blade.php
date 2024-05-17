@@ -15,8 +15,9 @@
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="../../css/style.css" <!-- End layout styles -->
+    <link rel="stylesheet" href="../../css/style.css">
     <link rel="shortcut icon" href="../../images/favicon.png" />
+    <script src="../../js/jquery.min.js"></script>
   </head>
   <body>
     <div class="container-scroller">
@@ -215,6 +216,7 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
+
     <script src="../../vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->

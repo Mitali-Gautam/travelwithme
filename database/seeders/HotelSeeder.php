@@ -4,17 +4,18 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Country;
+use App\Models\Hotel;
+use Illuminate\Support\Facades\Log;
 
-class CountrySeeder extends Seeder
+class HotelSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        //if(Country::count() == 0){
-            Country::factory(10)->create();
+        //if(Hotel::count() == 0){
+            Hotel::factory(20)->create();
         //}
     }
 }

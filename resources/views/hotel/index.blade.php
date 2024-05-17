@@ -4,13 +4,13 @@
 <div class="main-panel">
     <div class="content-wrapper">
       <div class="page-header">
-        <h3 class="page-title"> Country List </h3>
+        <h3 class="page-title"> Hotel List </h3>
         @if (session()->has("success"))
             <p class="font-weight-bold text-success">{{session("success")}}</p>
         @endif
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li><a href="{{route('country.create')}}" class="btn btn-primary btn-icon-text"> Add Country <i class="icon-plus"></i></a></li>
+            <li><a href="{{route('hotel.create')}}" class="btn btn-primary btn-icon-text"> Add Hotel <i class="icon-plus"></i></a></li>
           </ol>
         </nav>
       </div>
@@ -22,18 +22,22 @@
                 <thead>
                   <tr>
                     <th> # </th>
-                    <th> Country Name </th>
+                    <th> Hotel Name </th>
+                    <th>Country Name</th>
+                    <th>City Name</th>
                     <th></th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($countries as $country)
+                    @foreach ($hotels as $hotel)
                         <tr>
-                            <td> {{$country->id}} </td>
-                            <td> {{$country->name}} </td>
-                            <td><a href="{{route('country.edit',$country->id)}}" class="btn btn-dark btn-icon-text btn-sm"> Edit <i class="icon-doc btn-icon-append icon-sm"></i></a></td>
-                            <td><a href="{{route('country.delete',$country->id)}}" class="btn btn-danger btn-icon-text btn-sm"> Delete <i class="icon-trash icon-sm"></i></a></td>
+                            <td> {{$hotel->id}} </td>
+                            <td> {{$hotel->name}} </td>
+                            <td> {{$hotel->country->name}} </td>
+                            <td> {{$hotel->city->name}} </td>
+                            <td><a href="{{route('hotel.edit',$hotel->id)}}" class="btn btn-dark btn-icon-text btn-sm"> Edit <i class="icon-doc btn-icon-append icon-sm"></i></a></td>
+                            <td><a href="{{route('hotel.delete',$hotel->id)}}" class="btn btn-danger btn-icon-text btn-sm"> Delete <i class="icon-trash icon-sm"></i></a></td>
                         </tr>
                     @endforeach
 

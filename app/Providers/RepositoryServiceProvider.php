@@ -7,6 +7,8 @@ use App\Interfaces\CountryRepositoryInterface;
 use App\Repositories\CountryRepository;
 use App\Interfaces\CityRepositoryInterface;
 use App\Repositories\CityRepository;
+use App\Interfaces\HotelRepositoryInterface;
+use App\Repositories\HotelRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -17,6 +19,7 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(CountryRepositoryInterface::class, CountryRepository::class);
         $this->app->bind(CityRepositoryInterface::class, CityRepository::class);
+        $this->app->bind(HotelRepositoryInterface::class, HotelRepository::class);
     }
 
     /**

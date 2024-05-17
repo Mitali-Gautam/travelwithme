@@ -52,25 +52,19 @@ class CityController extends Controller
             session()->flash("success","City Created Successfully ");
             return redirect()->route('city.create');
 
-        }catch(AuthorException $e){
+        }catch(CityException $e){
             return back()->withInput()->withErrors(['error' => $e->getMessage()]);
         }
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id,Request $request)
     {
-        //
+        $city = $this->cityRepository->getCityById($id);
+        $countries = $this->countryRepository->getAllCountries();
+        return view('city.edit',['city'=> $city,'countries'=>$countries]);
     }
 
     /**
@@ -78,14 +72,37 @@ class CityController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try{
+            $data = [
+                'name' => $request->name,
+                'country_id' => $request->country_id,
+                'description' => $request->city_desciption,
+            ];
+            $this->cityRepository->updateCity($id,$data);
+            session()->flash("success","City Updated Successfully ");
+            return redirect()->route('cities');
+
+        } catch (CountryException $e) {
+            return back()->withInput()->withErrors(['error' => $e->getMessage()]);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(string $id)
     {
-        //
+        try{
+            $city = $this->cityRepository->deleteCity($id);
+            session()->flash("success","City Deleted Successfully ");
+            return redirect()->route('cities');
+        }catch (CityException $e) {
+            return back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function getCities($countryId) {
+        $cities = $this->cityRepository->getCities($countryId);
+        return $cities;
     }
 }

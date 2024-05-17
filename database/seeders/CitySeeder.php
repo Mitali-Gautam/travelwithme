@@ -13,8 +13,8 @@ class CitySeeder extends Seeder
      */
     public function run(): void
     {
-        if(City::count() == 0){
+        //if(City::count() == 0){
             City::factory(10)->create();
-        }
+        //}
     }
 }

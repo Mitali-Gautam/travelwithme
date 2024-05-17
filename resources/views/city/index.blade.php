@@ -10,7 +10,7 @@
         @endif
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li><a href="" class="btn btn-primary btn-icon-text"> Add City <i class="icon-plus"></i></a></li>
+            <li><a href="{{route('city.create')}}" class="btn btn-primary btn-icon-text"> Add City <i class="icon-plus"></i></a></li>
           </ol>
         </nav>
       </div>
@@ -32,8 +32,8 @@
                         <tr>
                             <td> {{$city->id}} </td>
                             <td> {{$city->name}} </td>
-                            <td><a href="" class="btn btn-dark btn-icon-text btn-sm"> Edit <i class="icon-doc btn-icon-append icon-sm"></i></a></td>
-                            <td><a href="" class="btn btn-danger btn-icon-text btn-sm"> Delete <i class="icon-trash icon-sm"></i></a></td>
+                            <td><a href="{{route('city.edit',$city->id)}}" class="btn btn-dark btn-icon-text btn-sm"> Edit <i class="icon-doc btn-icon-append icon-sm"></i></a></td>
+                            <td><a href="{{route('city.delete',$city->id)}}" class="btn btn-danger btn-icon-text btn-sm"> Delete <i class="icon-trash icon-sm"></i></a></td>
                         </tr>
                     @endforeach
 
