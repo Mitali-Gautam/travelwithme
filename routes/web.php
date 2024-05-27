@@ -34,3 +34,11 @@ Route::get("/hotels/edit/{id}",[HotelController::class,'edit'])->name("hotel.edi
 Route::post("/hotels/update/{id}",[HotelController::class,'update'])->name("hotel.update");
 Route::get("/hotels/delete/{id}",[HotelController::class,'delete'])->name("hotel.delete");
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

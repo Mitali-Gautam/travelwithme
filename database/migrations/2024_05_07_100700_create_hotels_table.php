@@ -24,6 +24,7 @@ return new class extends Migration
             $table->integer("rating")->nullable(false);
             $table->string("check_in","20")->nullable(false);
             $table->string("check_out","20")->nullable(false);
+            $table->string("hotel_temp_image_name","100");
             $table->timestamps();
             $table->softDeletes();
         });
